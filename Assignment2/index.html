@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rotating A</title>
+    <link rel="stylesheet" href="./main.css">
+</head>
+
+<script type-"text/javascript" src="../Common/webgl-utils.js"></script>
+<script type-"text/javascript" src="../Common/initShaders.js"></script>
+<script type-"text/javascript" src="../Common/MV.js"></script>
+<script type-"text/javascript" src="rotatingA.js"></script>
+
+<body>
+
+
+    <script>
+        function changeColors(r, g, b) {
+            console.log("Changing to a random color ...");
+        }
+        function rotateClockwise() {
+            console.log("Rotating object");
+        }
+    </script>
+
+
+
+    <canvas id="glCanvas" width="640" height="480"></canvas>
+    <button id="rotateLeft" onclick="">Rotate Counter-Clockwise</button>
+    <button id="changeColor"> Colors </button>
+
+    <script id="vector-shader"></script>
+    <script id="fragment-shader">
+        //uniform mat4 worldViewProjection;
+        //attribute vec4 position;
+        /*
+         function main() {
+             const canvas = document.querySelector("#glCanvas");
+             const gl = canvas.getContext("webgl");
+             if (gl === null) {
+                 alert("Unable to initialize WebGL. Your browser or machine may not support it.");
+                 return;
+             }
+             gl.clearColor(0, 0, 0, 0.3);
+             gl.clear(gl.COLOR_BUFFER_BIT);
+         }
+         window.onload = main;
+         */
+    </script>
+
+</body>
+
+</html>
