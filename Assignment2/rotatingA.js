@@ -19,9 +19,11 @@ window.onload = function init() {
     gl.useProgram(program);
 
     var vertices = [
+        vec2(-this.Math.sqrt(2)/2, -this.Math.sqrt(2)/2),
         vec2(0, 1),
-        vec2(-1, 0),
-        vec2(1, 0)
+        vec2(this.Math.sqrt(2)/2, -this.Math.sqrt(2)/2),
+        vec2(-0.415, 0.0),
+        vec2(0.415, 0.0),
     ];
     var bufferId = gl.createBuffer();
     this.gl.bindBuffer(gl.ARRAY_BUFFER, bufferId);
@@ -36,9 +38,12 @@ window.onload = function init() {
 };
 
 function render(){
+
     gl.clear(gl.COLOR_BUFFER_BIT);
-    theta += 2;
     gl.uniform1f(thetaLoc, theta);
-    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 3); 
+    theta += 0.1;
+    gl.drawArrays(gl.LINE_STRIP, 0, 3); 
+    gl.drawArrays(gl.LINE_STRIP, 3, 2); 
+    
     window.requestAnimationFrame(render);
 }
