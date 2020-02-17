@@ -50,15 +50,20 @@ function render() {
     gl.clear(gl.COLOR_BUFFER_BIT);
     gl.uniform1f(thetaLoc, theta);
     theta += 0.10/frames;
+
+    //  Render A shape
     gl.drawArrays(gl.LINE_STRIP, 0, 3);
+    
+    //  Render A band
     gl.drawArrays(gl.LINE_STRIP, 3, 2);
+    //  Input from user
     frames = +document.getElementById("fps").value;
     window.requestAnimationFrame(render);
     sleep(1000/frames);
     console.log(frames);
 }
 
-
+//  Delay method
 function sleep(delay) {
     var start = new Date().getTime();
     while (new Date().getTime() < start + delay);
