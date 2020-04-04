@@ -1,0 +1,36 @@
+.Button1{
+   background-color: #008CBA;
+   border: none;
+   color: white;
+   padding: 15px 32px;
+   text-align: center;
+   text-decoration: none;
+   display: inline-block;
+   font-size: 500;
+}
+.Button2{
+   background-color: royalblue;
+   border: none;
+   color: white;
+   padding: 15px 32px;
+   text-align: center;
+   text-decoration: none;
+   display: inline-block;
+   font-size: 500;
+}
+h2{
+   font-family: Arial, Helvetica, sans-serif;
+   color: tomato;
+}
+img{
+   height: 60%;
+   width: 512px;
+ } 
+ body {
+   background-color: lightblue;
+ }
+ #rfTitle{
+   background-color: bisque;
+   color:brown;
+   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+ }
