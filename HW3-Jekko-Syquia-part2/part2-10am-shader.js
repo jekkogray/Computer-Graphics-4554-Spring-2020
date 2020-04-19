@@ -138,22 +138,9 @@ window.onload = function init() {
     document.getElementById("Button6").onclick = function () { theta -= dr; };
     document.getElementById("Button7").onclick = function () { phi += dr; };
     document.getElementById("Button8").onclick = function () { phi -= dr; };
-    document.getElementById("day-night").onclick = function() {
-        checkDay()
-    };
     render();
 }
 
-function checkDay() {
-    if (day) {
-        lightAmbient = vec4(0.3, 0.3, 0.3, 1.0);
-        day = false;
-    }
-    else {
-        lightAmbient = vec4(0.3, -2.0, 0.3, 1.0);
-        day = true;
-    }
-}
 
 var render = function () {
     gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
