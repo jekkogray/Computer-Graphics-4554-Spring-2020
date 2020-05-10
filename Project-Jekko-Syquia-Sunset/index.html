@@ -1,0 +1,39 @@
+<html>
+<head>
+	<title> Jekko Syquia Sunset </title> 
+	<script src="js/three.js"></script>
+	<link rel="stylesheet" type="text/css" href="style/style.css">
+</head>
+<body>
+	<canvas id="sunSetCanvas"></canvas>
+	<script>
+	    var renderer = new THREE.WebGLRenderer({canvas: document.getElementById('sunSetCanvas'), antialias: true});
+		renderer.setClearColor(0x5cb0ff);
+		renderer.setPixelRatio(window.devicePixelRatio);
+		renderer.setSize(window.innerWidth/4, window.innerHeight/4);
+
+		//Set up perspective with 37.8 fov
+		
+		var camera = new THREE.PerspectiveCamera(37.8, window.innerWidth/window.innerHeight, 0.1, 3000);
+		var scene = new THREE.Scene();
+
+		var material = new THREE.Material();
+
+		var geometry = new THREE.BoxGeometry(); 
+		var boxMaterial = new THREE.MeshNormalMaterial();
+		var cube = new THREE.Mesh(geometry, boxMaterial);
+
+		scene.add(cube);
+		camera.position.z = 5;
+
+		//Render Scene
+		function animate() {
+			requestAnimationFrame(animate);
+			cube.rotation.y += 0.01;
+			renderer.render(scene, camera);
+		}
+		animate();
+	</script>
+</body>
+</html>
+

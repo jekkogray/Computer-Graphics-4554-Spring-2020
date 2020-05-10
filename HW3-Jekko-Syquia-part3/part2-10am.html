@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<header>
+    <link rel="stylesheet" href="./styles/styles.css"></link>
+</header>
+<p> </p>
+<p> </p>
+<div>
+    <button id="Button5" class="Button">Increase theta</button>
+    <button id="Button6" class="Button">Decrease theta</button>
+    <button id="Button7" class="Button">Increase phi</button>
+    <button id="Button8" class="Button">Decrease phi</button>
+    </div>
+    <p> </p>
+    <h2 id="FOVy">FOVy: 75.0 </h2>
+    
+    <script id="vertex-shader" type="x-shader/x-vertex">
+        attribute  vec4 vPosition;
+        uniform vec4 lightPosition;
+
+        attribute vec3 vNormal; 
+        varying vec4 fColor;
+        uniform vec4 ambientProduct, diffuseProduct, specularProduct;
+        uniform mat4 modelViewMatrix;
+        uniform mat4 projectionMatrix;
+        uniform float shininess;
+        
+        void main() 
+        {
+            vec3 pos = -(modelViewMatrix*vPosition).xyz;
+
+            //fixed light position
+            vec3 light = lightPosition.xyz;
+            vec3 L = normalize(light-pos);
+            vec3 E = normalize(-pos);
+            vec3 H = normalize(L+E);
+
+            vec4 NN = vec4(vNormal, 0);
+            vec3 N = normalize((modelViewMatrix*NN).xyz);
+            vec4 ambient = ambientProduct;
+
+            float Kd = max(dot(L,N), 0.0);
+            vec4 diffuse = Kd*diffuseProduct;
+
+            float Ks = pow(max(dot(N, H), 0.0), shininess);
+            vec4 specular = Ks*specularProduct;
+
+            if (dot(L, N)<0.0){
+                specular = vec4(0.0, 0.0, 0.0, 1.0);
+            }
+            gl_Position = projectionMatrix*modelViewMatrix*vPosition;
+            fColor = ambient+diffuse+specular;
+            fColor.a = 1.0;
+        } 
+        </script>
+    
+    <script id="fragment-shader" type="x-shader/x-fragment">
+    
+        precision mediump float;
+        varying vec4 fColor;
+        
+        void
+        main()
+        {
+            gl_FragColor = fColor;
+        }
+        </script>
+    
+    <script type="text/javascript" src="../Common/webgl-utils.js"></script>
+    <script type="text/javascript" src="../Common/initShaders.js"></script>
+    <script type="text/javascript" src="../Common/MV.js"></script>
+    <script type="text/javascript" src="part2-10am-shader.js"></script>
+    
+    <body>
+    <div class="gl-canvas" align="center">
+      <canvas id="gl-canvas" width="700" height="1000">
+        Oops ... your browser doesn't support the HTML5 canvas element
+      </canvas>
+    <h1 id="rfTitle">Reference Image: Wall in kitchen room</h1>
+    <div id="refImage" align="center">
+        <img src="reference.jpg" alt="Reference image">
+    </div>
+
+    </div>
+    </body>
+    
+    </html>
