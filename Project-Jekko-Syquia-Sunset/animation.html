@@ -7,43 +7,51 @@
 <body>
 	<canvas id="sunSetCanvas"></canvas>
 	<script>
-	    var renderer = new THREE.WebGLRenderer({canvas: document.getElementById('sunSetCanvas'), antialias: true});
+        var renderer; 
+        //Scene declarations 
+        var light, 
+            camera, 
+            scene;
+        //Object declarations
+        var geometry, 
+            boxMaterial, 
+            cube;
+        
+        //initialize renderer
+    	renderer = new THREE.WebGLRenderer({canvas: document.getElementById('sunSetCanvas'), antialias: true});
 		renderer.setClearColor(0x5cb0ff);
 		renderer.setPixelRatio(window.devicePixelRatio);
 		renderer.setSize(window.innerWidth/4, window.innerHeight/4);
-
-		//Set up perspective with 37.8 fov
-		
-		var camera = new THREE.PerspectiveCamera(37.8, window.innerWidth/window.innerHeight, 0.1, 3000);
-		var scene = new THREE.Scene();
-
-		var material = new THREE.Material();
-
-		var geometry = new THREE.BoxGeometry(); 
-		var boxMaterial = new THREE.MeshPhongMaterial();
-		var cube = new THREE.Mesh(geometry, boxMaterial);
-		cube.castShadow = true;
-
-		var light = new THREE.PointLight(0x404040, 1, 500);
+        
+        //Initialize Scenes
+		camera = new THREE.PerspectiveCamera(37.8, window.innerWidth/window.innerHeight, 1, 100);
+		scene = new THREE.Scene();
+		light = new THREE.PointLight(0x404040, 1, 500);
 		light.position.set(0, 5, 5);
+        camera.position.z = 5;
 		scene.add(light);
-		scene.add(cube);
-		camera.position.z = 5;
+        
+        //Initialize Object
+		geometry = new THREE.BoxGeometry(); 
+		boxMaterial = new THREE.MeshPhongMaterial();
+		cube = new THREE.Mesh(geometry, boxMaterial);
+		cube.castShadow = true;
 		cube.rotation.y += 0.5;
+		scene.add(cube);
 
-		// setup ground
+		//Initialize ground
 		var planeGeometry = new THREE.PlaneBufferGeometry( 20, 20, 32, 32 );
 		var planeMaterial = new THREE.MeshStandardMaterial( { color: 0xffffff } )
 		var plane = new THREE.Mesh( planeGeometry, planeMaterial );
 		plane.receiveShadow = true;
 		scene.add(plane );
 
-
 		//Render Scene
 		function animate() {
 			requestAnimationFrame(animate);
 			renderer.render(scene, camera);
-		}
+        }
+
 		animate();
 	</script>
 </body>
