@@ -7,14 +7,20 @@ The map data was extracted from Google Maps using RenderDoc and imported in Blen
 Blender allowed for exporting to gltf file format that preserve animation. 
 
 
-#Instructions for running: 
+# Instructions for Setup: 
+## UNIX: 
 To run make sure python is installed to create a local server, since THREE.js requires a server to function for security issues. 
 
-##Python 2.x 
+### Python 2.x 
 python -m SimpleHTTPServer
 
-##Python 3.x
+
+### Python 3.x
 python -m http.server
 
+## Windows:
+Run in a local server and copy contents 
+
+# Viewing
 then enter the folowing in your browser
 http://localhost:8000/
