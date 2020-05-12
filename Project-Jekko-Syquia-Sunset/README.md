@@ -1,9 +1,10 @@
 Jekko Syquia
 # GWU, Washington Circle Animation THREE.js Project
 This is a webgl program that implements the use of THREE.js modules to create a 3D diorama animation. 
-It features panning, there will be a car running around the circle in DC. 
+It features panning, camera rotation, there is a mini animation of a car running around Washington Circle.
 
-The map data was extracted from Google Maps using RenderDoc and imported in Blender. 
+The map data was extracted from Google Maps and created in Blender. 
+The process for the model can be seen in the /3DScreenshots folder
 Blender allowed for exporting to gltf file format that preserve animation. 
 
 
@@ -24,3 +25,7 @@ Run in a local server and copy contents
 # Viewing
 then enter the folowing in your browser
 http://localhost:8000/
+
+# Loading a Different Model
+-   To load a smaller scale model replace model/WashingtonCircleFullScene.glb with
+    model/WashingtonCircleAnimation.glb
